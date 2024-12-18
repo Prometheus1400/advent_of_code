@@ -27,7 +27,7 @@ a, b, c = map(int, re.findall(r"\d+", registers))
 ip_table = {i: int(n) for i, n in enumerate(re.findall(r"\d", program))}
 target = list(map(int, re.findall(r"\d", program)))
 
-def execute(a:int, b:int, c:int, ip_table: dict[int, int]) -> list[int]:
+def execute(a:int, b:int, c:int) -> list[int]:
     ip = 0
     stdout = []
     while ip <= max(ip_table.keys()):
@@ -50,7 +50,7 @@ def solve(a: int, i: int):
         return
     for d in range(8):
         new_a = (a << 3) | d
-        res = execute(new_a, 0, 0, ip_table)
+        res = execute(new_a, 0, 0)
         if res == target[i:]:
             if i == 0:
                 print(new_a)

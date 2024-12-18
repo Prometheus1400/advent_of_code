@@ -5,7 +5,7 @@ registers, program = open("input.txt", "r").read().split("\n\n")
 a, b, c = map(int, re.findall(r"\d+", registers))
 ip_table = {i: int(n) for i, n in enumerate(re.findall(r"\d", program))}
 
-def execute(a:int, b:int, c:int, ip_table: dict[int, int]):
+def execute(a:int, b:int, c:int):
     ip = 0
     stdout = []
     while ip <= max(ip_table.keys()):
@@ -23,4 +23,4 @@ def execute(a:int, b:int, c:int, ip_table: dict[int, int]):
         ip += 2
     return stdout
 
-print(",".join(map(str, execute(a,b,c, ip_table))))
+print(",".join(map(str, execute(a,b,c))))
