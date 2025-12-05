@@ -52,8 +52,6 @@ fn part_1(buf: &str) -> usize {
 }
 
 fn part_2(buf: &str) -> usize {
-    let buf = read_input(5, Input);
-
     let ranges = buf
         .lines()
         .take_while(|l| !l.is_empty())
