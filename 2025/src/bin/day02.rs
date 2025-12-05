@@ -1,4 +1,5 @@
-use std::{fs, io::Read};
+use aoc_2025::{InputType::*, read_input};
+
 
 fn is_invalid(x: u64) -> bool {
     let x_str: String = x.to_string();
@@ -38,9 +39,7 @@ fn is_invalid2(x: u64) -> bool {
 }
 
 fn main() {
-    let mut buf = String::new();
-    fs::File::read_to_string(&mut fs::File::open("./input_1.txt").unwrap(), &mut buf).unwrap();
-    // fs::File::read_to_string(&mut fs::File::open("./sample.txt").unwrap(), &mut buf).unwrap();
+    let buf = read_input(2, Input);
     let ranges: Vec<String> = buf.split(",").map(|s| s.to_owned()).collect();
 
     let mut sum: u64 = 0;

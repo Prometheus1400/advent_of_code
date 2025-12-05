@@ -1,4 +1,4 @@
-use std::{fs, io::Read};
+use aoc_2025::{InputType::*, read_input};
 
 fn largest_joltage(bank: &str) -> u32 {
     let (index, first) = &bank[..bank.len() - 1]
@@ -31,13 +31,7 @@ fn largest_joltage2(bank: &str, bank_size: usize) -> u128 {
 }
 
 fn main() {
-    let mut buf = String::new();
-    fs::File::open("input_1.txt")
-        // fs::File::open("sample.txt")
-        .unwrap()
-        .read_to_string(&mut buf)
-        .unwrap();
-
+    let buf = read_input(3, Input);
     let mut total = 0;
     for bank in buf.lines() {
         let res = largest_joltage2(bank, 12);

@@ -1,9 +1,7 @@
-use std::{fs, io::Read};
+use aoc_2025::{InputType::*, read_input};
 
 fn main() {
-    let mut file = fs::File::open("input1.txt").unwrap();
-    let mut buf = String::new();
-    file.read_to_string(&mut buf).unwrap();
+    let buf = read_input(1, Input);
 
     let mut pw = 0;
     let mut state = 50;
