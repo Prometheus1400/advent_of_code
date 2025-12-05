@@ -1,6 +1,5 @@
 use aoc_2025::{InputType::*, read_input};
 
-
 fn is_invalid(x: u64) -> bool {
     let x_str: String = x.to_string();
     let len = x_str.len();
@@ -9,7 +8,6 @@ fn is_invalid(x: u64) -> bool {
     }
 
     if x_str[..len / 2] == x_str[len / 2..] {
-        println!("invalid: {x}");
         return true;
     }
 
@@ -26,7 +24,7 @@ fn is_invalid2(x: u64) -> bool {
         }
         let mut refs: Vec<&str> = vec![];
         for i in 0..(x_str.len() / size) {
-            refs.push(&x_str[(i*size)..((i + 1) * size)]);
+            refs.push(&x_str[(i * size)..((i + 1) * size)]);
         }
 
         let first = refs.first().unwrap();
@@ -38,8 +36,26 @@ fn is_invalid2(x: u64) -> bool {
     false
 }
 
-fn main() {
-    let buf = read_input(2, Input);
+fn part_1(buf: &str) -> u64 {
+    let ranges: Vec<String> = buf.split(",").map(|s| s.to_owned()).collect();
+
+    let mut sum: u64 = 0;
+    for range in ranges {
+        let (start, end) = range.split_once("-").unwrap();
+        let start: u64 = start.trim().parse().unwrap();
+        let end: u64 = end.trim().parse().unwrap();
+
+        for x in start..=end {
+            if is_invalid(x) {
+                sum += x;
+            }
+        }
+    }
+
+    sum
+}
+
+fn part_2(buf: &str) -> u64 {
     let ranges: Vec<String> = buf.split(",").map(|s| s.to_owned()).collect();
 
     let mut sum: u64 = 0;
@@ -50,17 +66,25 @@ fn main() {
 
         for x in start..=end {
             if is_invalid2(x) {
-                // println!("invalid: {x}");
                 sum += x;
             }
         }
     }
-    println!("{}", sum);
+
+    sum
+}
+
+fn main() {
+    let buf = read_input(2, Input);
+    let p1 = part_1(&buf);
+    println!("Part 1: {}", p1);
+    let p2 = part_2(&buf);
+    println!("Part 2: {}", p2);
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;   
+    use super::*;
 
     #[test]
     fn test_is_invalid2() {

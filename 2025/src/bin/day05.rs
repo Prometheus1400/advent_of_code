@@ -1,8 +1,7 @@
 use aoc_2025::{InputType::*, read_input};
 use itertools::Itertools;
 
-fn part_1() {
-    let buf = read_input(5, Input);
+fn part_1(buf: &str) -> usize {
     let lines1 = buf.lines();
     let lines2 = buf.lines();
 
@@ -48,10 +47,11 @@ fn part_1() {
             }
         }
     }
-    println!("{}", ans);
+
+    ans
 }
 
-fn part_2() {
+fn part_2(buf: &str) -> usize {
     let buf = read_input(5, Input);
 
     let ranges = buf
@@ -78,10 +78,13 @@ fn part_2() {
         let (lower, upper) = range;
         ans += upper - lower + 1;
     }
-    println!("{}", ans);
+    ans
 }
 
 fn main() {
-    part_1();
-    part_2();
+    let buf = read_input(5, Input);
+    let p1 = part_1(&buf);
+    println!("Part 1: {}", p1);
+    let p2 = part_2(&buf);
+    println!("Part 2: {}", p2);
 }

@@ -30,16 +30,32 @@ fn largest_joltage2(bank: &str, bank_size: usize) -> u128 {
     (first * 10u128.pow(bank_size as u32 - 1)) + largest_joltage2(&bank[index + 1..], bank_size - 1)
 }
 
-fn main() {
-    let buf = read_input(3, Input);
+fn part_1(buf: String) -> u128 {
+    let mut total = 0;
+    for bank in buf.lines() {
+        let res = largest_joltage(bank);
+        total += res as u128;
+    }
+
+    total
+}
+
+fn part_2(buf: String) -> u128 {
     let mut total = 0;
     for bank in buf.lines() {
         let res = largest_joltage2(bank, 12);
-        println!("bank: {}\nres: {}", bank, res);
         total += res;
     }
 
-    println!("total: {}", total);
+    total
+}
+
+fn main() {
+    let buf = read_input(3, Input);
+    let p1 = part_1(buf.clone());
+    println!("Part 1: {}", p1);
+    let p2 = part_2(buf);
+    println!("Part 2: {}", p2);
 }
 
 #[cfg(test)]
