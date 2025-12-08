@@ -51,7 +51,7 @@ fn part_2(buf: String) -> u128 {
 }
 
 fn main() {
-    let buf = read_input(3, Input);
+    let buf = read_input(3, &Input);
     let p1 = part_1(buf.clone());
     println!("Part 1: {}", p1);
     let p2 = part_2(buf);

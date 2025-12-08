@@ -75,7 +75,7 @@ fn part_2(buf: &str) -> u64 {
 }
 
 fn main() {
-    let buf = read_input(2, Input);
+    let buf = read_input(2, &Input);
     let p1 = part_1(&buf);
     println!("Part 1: {}", p1);
     let p2 = part_2(&buf);

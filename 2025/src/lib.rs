@@ -3,7 +3,7 @@ pub enum InputType {
     Input,
 }
 
-pub fn read_input(day: u8, input_type: InputType) -> String {
+pub fn read_input(day: u8, input_type: &InputType) -> String {
     use std::{fs, io::Read};
     let filename = match input_type {
         InputType::Sample => format!("./input/day{:02}/sample.txt", day),
