@@ -96,7 +96,7 @@ fn part_2(buf: &str) -> i32 {
 }
 
 fn main() {
-    let buf = read_input(4, Input);
+    let buf = read_input(4, &Input);
     let p1 = part_1(&buf);
     println!("Part 1: {}", p1);
     let p2 = part_2(&buf);

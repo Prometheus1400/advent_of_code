@@ -80,7 +80,7 @@ fn part_2(buf: &str) -> usize {
 }
 
 fn main() {
-    let buf = read_input(5, Input);
+    let buf = read_input(5, &Input);
     let p1 = part_1(&buf);
     println!("Part 1: {}", p1);
     let p2 = part_2(&buf);
