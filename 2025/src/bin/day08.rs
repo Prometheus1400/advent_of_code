@@ -100,6 +100,7 @@ fn part_1(buf: &str, input_type: &InputType) -> usize {
 
     let times = match input_type {
         Sample => 10,
+        Sample2 => unreachable!(),
         Input => 1000,
     };
 
@@ -151,6 +152,7 @@ fn part_2(buf: &str, input_type: &InputType) -> usize {
     let times = match input_type {
         Sample => 10,
         Input => 1000,
+        Sample2 => unreachable!()
     };
 
     let mut last: Option<(Rc<RefCell<Set>>, Rc<RefCell<Set>>)> = None;
@@ -167,8 +169,8 @@ fn part_2(buf: &str, input_type: &InputType) -> usize {
 pub fn main() {
     let t = InputType::Input;
     let buf = read_input(8, &t);
-    let part_1 = part_1(&buf, &t);
-    println!("part 1: {}", part_1);
+    // let part_1 = part_1(&buf, &t);
+    // println!("part 1: {}", part_1);
     let part_2 = part_2(&buf, &t);
     println!("part 2: {}", part_2);
 }
